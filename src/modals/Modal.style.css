@@ -1,0 +1,129 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 24px;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  max-height: calc(100vh - 64px);
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: zoomIn 0.3s ease-out;
+  border: 1px solid var(--color-light-gray);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-light-gray);
+}
+
+.modal-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin: 0;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--color-gray);
+  transition: var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--color-dark);
+}
+
+.modal-body {
+  padding: 24px;
+  overflow-y: auto;
+  max-height: calc(100vh - 180px);
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive düzenlemeler */
+@media (max-width: 768px) {
+  .modal-backdrop {
+    padding: 16px;
+  }
+  
+  .modal-content {
+    max-height: calc(100vh - 32px);
+  }
+  
+  .modal-header {
+    padding: 16px;
+  }
+  
+  .modal-body {
+    padding: 16px;
+    max-height: calc(100vh - 140px);
+  }
+}
+
+/* Custom scrollbar for modal-body */
+.modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: var(--color-bg);
+  border-radius: 6px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: var(--color-light-gray);
+  border-radius: 6px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray);
+}
